@@ -1,7 +1,7 @@
 {
-  "name": "excel-course",
+  "name": "excel",
   "version": "1.0.0",
-  "description": "Pure JavaScript Excel Application",
+  "description": "JavaScript Excel",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -39,13 +39,14 @@
     "eslint-loader": "^3.0.3",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "sass-loader": "^8.0.2",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.8.3"
+    "@babel/polyfill": "^7.8.3",
+    "normalize.css": "^8.0.1"
   }
 }

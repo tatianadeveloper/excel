@@ -25,18 +25,32 @@ function createRow(index, content) {
     </div>`;
 }
 
-function toCell(_, col) {
+/* function toCell(row, col) {
   return `
-    <div class="cell"  data-col="${col}"   contenteditable>
+    <div class="cell"  data-col="${col}" data-row="${row}" contenteditable>
     </div>
     `;
+}*/
+
+function toCell(row) {
+  return function(_, col) {
+    return `
+    <div 
+        class="cell"
+        contenteditable
+        data-col="${col}" 
+        data-type="cell"
+        data-id="${row}:${col}">
+    </div>
+    `;
+  };
 }
 
 function toChar(_, index) {
   return String.fromCharCode(CODES.A + index);
 }
 
-export function createTable(rowsCount = 15) {
+export function createTable(rowsCount = 20) {
   const colsCount =CODES.Z - CODES.A +1;
   const rows = [];
 
@@ -49,18 +63,14 @@ export function createTable(rowsCount = 15) {
 
   rows.push(createRow(null, cols));
 
-  for (let i=0; i<rowsCount; i++) {
+  for (let row=0; row < rowsCount; row++) {
     const cells = new Array(colsCount)
         .fill('')
-        // .map(toChar)
-        // .map(toCell)
-        .map(toCell)
-        // .map((col) => {
-        //  toCell(col, i);
-        // })
+        .map(toCell(row))
+        // .map((_, col) => toCell(row, col))
         .join('');
 
-    rows.push(createRow(i + 1, cells));
+    rows.push(createRow(row + 1, cells));
   }
 
   return rows.join('');

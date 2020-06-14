@@ -1,6 +1,6 @@
 import {rootReducer} from '@/redux/rootReducer';
 
-export class CreateStore {
+export class CreateStoreClass {
   constructor(rootReducer, initialState = {}) {
     this.listeners = [];
     this.state = rootReducer({...initialState}, {type: '__INIT__'});

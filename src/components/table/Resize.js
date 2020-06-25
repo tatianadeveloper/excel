@@ -1,4 +1,4 @@
-import {$} from '@core/dom';
+import { $ } from '@core/dom';
 
 export function resizeHandler($root, event) {
   return new Promise((resolve) => {
@@ -18,11 +18,11 @@ export function resizeHandler($root, event) {
       if (type === 'col') {
         const delta = e.pageX - coords.right;
         value = coords.width + delta;
-        $resizer.css({right: -delta + 'px'});
+        $resizer.css({ right: -delta + 'px' });
       } else {
         const delta = e.pageY - coords.bottom;
         value = coords.height + delta;
-        $resizer.css({bottom: -delta + 'px'});
+        $resizer.css({ bottom: -delta + 'px' });
       }
     };
 
@@ -31,11 +31,12 @@ export function resizeHandler($root, event) {
       document.onmouseup = null;
 
       if (type === 'col') {
-        $parent.css({width: value + 'px'});
-        $root.findAll(`[data-col="${$parent.data.col}"]`)
-            .forEach((el) => el.style.width = value + 'px');
+        $parent.css({ width: value + 'px' });
+        $root
+          .findAll(`[data-col="${$parent.data.col}"]`)
+          .forEach((el) => (el.style.width = value + 'px'));
       } else {
-        $parent.css({height: value + 'px'});
+        $parent.css({ height: value + 'px' });
       }
 
       resolve({

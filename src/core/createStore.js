@@ -1,20 +1,14 @@
 export function createStore(rootReducer, initialState = {}) {
-  let state = rootReducer({...initialState}, {type: '__INIT__'});
+  let state = rootReducer({ ...initialState }, { type: '__INIT__' });
   let listeners = [];
 
   return {
-    subscribe: function(fn) {
+    subscribe(fn) {
       listeners.push(fn);
-      /* return () => {
-        listeners = listeners.filter((l) => l !== fn);
-      };*/
       return {
         unsubscribe() {
-          listeners = listeners.filter((listener) => {
-            return listener !== fn;
-          });
+          listeners = listeners.filter((l) => l !== fn);
         },
-            
       };
     },
     dispatch(action) {

@@ -42,7 +42,7 @@ export function changeTitle(data) {
   };
 }
 
-export function updateDate(params) {
+export function updateDate() {
   return {
     type: UPDATE_DATE,
   };
